@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Infrastructure", "src\Wafi.BusReservationSystem.Infrastructure\Wafi.BusReservationSystem.Infrastructure.csproj", "{2D633418-C6B1-43DA-A3B6-89114C481AE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Application.Contracts", "src\Wafi.BusReservationSystem.Application.Contracts\Wafi.BusReservationSystem.Application.Contracts.csproj", "{297C3712-7B80-4267-ADA5-26A18FC9F2B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
