@@ -1,0 +1,6 @@
+@Wafi.BusReservationSystem.WebApi_HostAddress = http://localhost:5239
+
+GET {{Wafi.BusReservationSystem.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
