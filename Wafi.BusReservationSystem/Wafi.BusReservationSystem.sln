@@ -5,6 +5,14 @@ VisualStudioVersion = 17.14.36616.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.WebApi", "src\Wafi.BusReservationSystem.WebApi\Wafi.BusReservationSystem.WebApi.csproj", "{E662B0EF-76A2-4518-9AA5-FEF0BD520635}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Domain", "src\Wafi.BusReservationSystem.Domain\Wafi.BusReservationSystem.Domain.csproj", "{EFC924E5-4356-4C49-8E9E-D13F68B131F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Application", "src\Wafi.BusReservationSystem.Application\Wafi.BusReservationSystem.Application.csproj", "{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Web", "src\Wafi.BusReservationSystem.Web\Wafi.BusReservationSystem.Web.csproj", "{E434709F-99C2-4FBF-8380-FA11F805A984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Infrastructure", "src\Wafi.BusReservationSystem.Infrastructure\Wafi.BusReservationSystem.Infrastructure.csproj", "{2D633418-C6B1-43DA-A3B6-89114C481AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{E662B0EF-76A2-4518-9AA5-FEF0BD520635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E662B0EF-76A2-4518-9AA5-FEF0BD520635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E662B0EF-76A2-4518-9AA5-FEF0BD520635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFC924E5-4356-4C49-8E9E-D13F68B131F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFC924E5-4356-4C49-8E9E-D13F68B131F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFC924E5-4356-4C49-8E9E-D13F68B131F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFC924E5-4356-4C49-8E9E-D13F68B131F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E434709F-99C2-4FBF-8380-FA11F805A984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E434709F-99C2-4FBF-8380-FA11F805A984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E434709F-99C2-4FBF-8380-FA11F805A984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E434709F-99C2-4FBF-8380-FA11F805A984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
