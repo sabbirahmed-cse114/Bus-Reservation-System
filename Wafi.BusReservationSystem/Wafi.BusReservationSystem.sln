@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Application", "src\Wafi.BusReservationSystem.Application\Wafi.BusReservationSystem.Application.csproj", "{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Web", "src\Wafi.BusReservationSystem.Web\Wafi.BusReservationSystem.Web.csproj", "{E434709F-99C2-4FBF-8380-FA11F805A984}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Infrastructure", "src\Wafi.BusReservationSystem.Infrastructure\Wafi.BusReservationSystem.Infrastructure.csproj", "{2D633418-C6B1-43DA-A3B6-89114C481AE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Application.Contracts", "src\Wafi.BusReservationSystem.Application.Contracts\Wafi.BusReservationSystem.Application.Contracts.csproj", "{297C3712-7B80-4267-ADA5-26A18FC9F2B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wafi.BusReservationSystem.Web", "src\Wafi.BusReservationSystem.Web\Wafi.BusReservationSystem.Web.csproj", "{F931C58C-4FB1-4505-946B-218B3B64419E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2E094F5-752F-4DD1-BC65-1BB12CFEBF32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E434709F-99C2-4FBF-8380-FA11F805A984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E434709F-99C2-4FBF-8380-FA11F805A984}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E434709F-99C2-4FBF-8380-FA11F805A984}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E434709F-99C2-4FBF-8380-FA11F805A984}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D633418-C6B1-43DA-A3B6-89114C481AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{297C3712-7B80-4267-ADA5-26A18FC9F2B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F931C58C-4FB1-4505-946B-218B3B64419E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F931C58C-4FB1-4505-946B-218B3B64419E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F931C58C-4FB1-4505-946B-218B3B64419E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F931C58C-4FB1-4505-946B-218B3B64419E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

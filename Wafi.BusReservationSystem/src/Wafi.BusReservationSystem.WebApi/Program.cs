@@ -1,5 +1,8 @@
 using Serilog;
 using Serilog.Events;
+using Microsoft.EntityFrameworkCore;
+using Wafi.BusReservationSystem.Infrastructure.Data;
+
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
@@ -20,6 +23,9 @@ try
         .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
         .Enrich.FromLogContext()
         .ReadFrom.Configuration(builder.Configuration));
+
+    builder.Services.AddDbContext<WafiDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
