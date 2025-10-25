@@ -1,8 +1,13 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
-using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using Wafi.BusReservationSystem.Infrastructure.Data;
+using Wafi.BusReservationSystem.Web;
 
+#region Bootstrap Logger Configuration
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json")
@@ -11,19 +16,36 @@ var configuration = new ConfigurationBuilder()
 Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
             .CreateBootstrapLogger();
+#endregion
 
 try
 {
     Log.Information("Application Starting...");
 
     var builder = WebApplication.CreateBuilder(args);
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    var migrationAssembly = Assembly.GetExecutingAssembly().FullName;
+
+    #region Serilog General Configuration
     builder.Host.UseSerilog((ctx, lc) => lc
         .MinimumLevel.Debug()
         .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
         .Enrich.FromLogContext()
         .ReadFrom.Configuration(builder.Configuration));
+    #endregion
 
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    #region Autofac Configuration
+    builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+    builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+    {
+        containerBuilder.RegisterModule(new WebModule(connectionString,migrationAssembly));
+    });
+    #endregion
+
+    #region AutoMapper Configuration
+    builder.Services.AddAutoMapper(typeof(WebProfile).Assembly);
+    #endregion
+
     builder.Services.AddDbContext<WafiDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
     builder.Services.AddControllersWithViews();

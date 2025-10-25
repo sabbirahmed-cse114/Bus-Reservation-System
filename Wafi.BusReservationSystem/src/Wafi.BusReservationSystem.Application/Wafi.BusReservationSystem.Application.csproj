@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Wafi.BusReservationSystem.Application.Contracts\Wafi.BusReservationSystem.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Wafi.BusReservationSystem.Domain\Wafi.BusReservationSystem.Domain.csproj" />
   </ItemGroup>
 
 </Project>

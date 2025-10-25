@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="UtilityContracts\" />
-    <Folder Include="RepositoryContracts\" />
-  </ItemGroup>
-
 </Project>
