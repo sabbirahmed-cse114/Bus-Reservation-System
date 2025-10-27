@@ -11,7 +11,5 @@ namespace Wafi.BusReservationSystem.Web.Models.RouteModels
         public IList<SelectListItem>? Cities { get; private set; }
         public int Order {  get; set; }
         public double Distance { get; set; }
-        public TimeSpan ArrivalTime { get; set; }
-        public TimeSpan DepartureTime { get; set; }
     }
 }

@@ -10,7 +10,5 @@ namespace Wafi.BusReservationSystem.Domain.Entities
         public Route? Route { get; set; }
         public int Order { get; set; }
         public double Distance { get; set; }
-        public TimeSpan ArrivalTime { get; set; }
-        public TimeSpan DepartureTime { get; set; }
     }
 }

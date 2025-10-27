@@ -52,11 +52,10 @@ namespace Wafi.BusReservationSystem.Web.Controllers
             {
                 try
                 {
-                    int cnt = 0;
+                    int cnt = 1;
                     var route = _mapper.Map<Domain.Entities.Route>(model);
                     route.Id = Guid.NewGuid();
                     route.BoardingPointCity = _cityManagementService.GetCity((Guid)model.BoardingPointId);
-                    route.Order =cnt++;
 
                         foreach (var dpModel in model.DroppingPoints)
                         {
@@ -66,12 +65,12 @@ namespace Wafi.BusReservationSystem.Web.Controllers
                                 RouteId = route.Id,
                                 DroppingPointId = dpModel.DroppingPointId,
                                 Distance = dpModel.Distance,
-                                Order = cnt++,
-                                ArrivalTime = dpModel.ArrivalTime,
-                                DepartureTime = dpModel.DepartureTime
+                                Order = cnt++
                             };
                             route.Stops.Add(droppingPoint);
+                        route.Distance += dpModel.Distance;
                         }
+                    route.TotalStops = cnt - 1;
                     await _routeManagementService.CreateRouteAsync(route);
                     TempData["Success"] = "Route created successfully!";
                     return RedirectToAction("Index");

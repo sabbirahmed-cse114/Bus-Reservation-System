@@ -9,10 +9,8 @@ namespace Wafi.BusReservationSystem.Web.Models.RouteModels
         public string? Name { get; set; } 
         public Guid? BoardingPointId { get; set; }
         public IList<SelectListItem>? BoardingPoints { get; private set; }
-        public int Order { get; set; }
+        public int TotalStops { get; set; }
         public double Distance { get; set; }
-        public TimeSpan ArrivalTime { get; set; }
-        public TimeSpan DepartureTime { get; set; }
 
         public List<RouteDroppingPointModel>? DroppingPoints { get; set; } = new();
 

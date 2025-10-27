@@ -79,17 +79,15 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                     {
                         Id = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
                         BoardingPointId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
-                        Order = 1,
-                        Distance = 250,
-                        DepartureTime = new TimeSpan(18,0,0)
+                        TotalStops = 6,
+                        Distance = 250
                     },
                     new Route
                     {
                         Id = Guid.Parse("81630E00-DF5D-4C49-A335-AAEB0E44A4D4"),
                         BoardingPointId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
-                        Order = 1,
-                        Distance = 650,
-                        DepartureTime = new TimeSpan(21, 0, 0)
+                        TotalStops = 2,
+                        Distance = 650
                     }
                 );
 
@@ -101,9 +99,7 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                         RouteId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
                         DroppingPointId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
                         Order = 2,
-                        Distance = 0,
-                        ArrivalTime = new TimeSpan(7, 0, 0),
-                        DepartureTime = new TimeSpan(8, 0, 0)
+                        Distance = 0
                     },
                     new RouteDroppingPoint
                     {
@@ -111,9 +107,7 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                         RouteId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
                         DroppingPointId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
                         Order = 3,
-                        Distance = 25,
-                        ArrivalTime = new TimeSpan(10, 0, 0),
-                        DepartureTime = new TimeSpan(10, 05, 0)
+                        Distance = 25
                     },
                     new RouteDroppingPoint
                     {
@@ -121,9 +115,7 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                         RouteId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
                         DroppingPointId = Guid.Parse("24A44820-CFF8-4509-AA16-A1F4C5BB0BD5"),
                         Order = 4,
-                        Distance = 50,
-                        ArrivalTime = new TimeSpan(20, 0, 0),
-                        DepartureTime = new TimeSpan(21, 0, 0)
+                        Distance = 50
                     }
                 );
 
