@@ -7,5 +7,7 @@ namespace Wafi.BusReservationSystem.Application
     {
         public ICityRepository CityRepository { get; }
         public IBusRepository BusRepository { get; }
+        public IRouteRepository RouteRepository { get; }
+        public IRouteDroppingPointRepository RouteDroppingPointRepository { get; }
     }
 }

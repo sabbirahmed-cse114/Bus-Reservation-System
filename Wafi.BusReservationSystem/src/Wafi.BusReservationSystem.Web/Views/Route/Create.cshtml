@@ -1,0 +1,70 @@
+﻿@model Wafi.BusReservationSystem.Web.Models.RouteModels.RouteCreateModel
+@{
+    ViewData["Title"] = "Create Route";
+}
+
+<h2>Create Route</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>From City</label>
+        <select asp-for="BoardingPointId" asp-items="Model.BoardingPoints" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Departure Time</label>
+        <input asp-for="DepartureTime" type="time" class="form-control" />
+    </div>
+
+    <hr />
+    <h4>Dropping Points</h4>
+    <div id="droppingPointsContainer">
+
+    </div>
+    <button type="button" class="btn btn-secondary" id="addDroppingPointBtn">+ Add Stops</button>
+
+    <hr />
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+
+
+    @section Scripts {
+
+    <script>
+        let index = 0;
+        const cities = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.AllCities));
+
+        document.getElementById("addDroppingPointBtn").addEventListener("click", function () {
+            const container = document.getElementById("droppingPointsContainer");
+
+            const html = `
+            <div class="dropping-point border p-2 mb-2">
+                <label>City</label>
+                <select name="DroppingPoints[${index}].DroppingPointId" class="form-control">
+                    ${cities.map(c => `<option value="${c.value}">${c.text}</option>`).join('')}
+                </select>
+                <label>Distance</label>
+                <input type="number" name="DroppingPoints[${index}].Distance" class="form-control" />
+                <label>Arrival Time</label>
+                <input type="time" name="DroppingPoints[${index}].ArrivalTime" class="form-control" />
+                <label>Departure Time</label>
+                <input type="time" name="DroppingPoints[${index}].DepartureTime" class="form-control" />
+                <button type="button" class="btn btn-danger mt-2 removeBtn">Remove</button>
+            </div>`;
+
+            container.insertAdjacentHTML('beforeend', html);
+            index++;
+        });
+
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("removeBtn")) {
+                e.target.closest(".dropping-point").remove();
+            }
+        });
+    </script>
+}

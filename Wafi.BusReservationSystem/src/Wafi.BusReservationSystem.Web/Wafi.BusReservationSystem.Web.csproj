@@ -26,11 +26,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Wafi.BusReservationSystem.Application.Contracts\Wafi.BusReservationSystem.Application.Contracts.csproj" />
     <ProjectReference Include="..\Wafi.BusReservationSystem.Application\Wafi.BusReservationSystem.Application.csproj" />
+    <ProjectReference Include="..\Wafi.BusReservationSystem.Domain\Wafi.BusReservationSystem.Domain.csproj" />
     <ProjectReference Include="..\Wafi.BusReservationSystem.Infrastructure\Wafi.BusReservationSystem.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Logs\" />
   </ItemGroup>
 
 </Project>

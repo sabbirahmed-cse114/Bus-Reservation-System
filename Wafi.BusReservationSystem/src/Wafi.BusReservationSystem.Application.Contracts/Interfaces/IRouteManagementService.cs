@@ -2,8 +2,8 @@
 
 namespace Wafi.BusReservationSystem.Application.Contracts.Interfaces
 {
-    public interface IBusManagementService
+    public interface IRouteManagementService
     {
-        Task CreateBusAsync(Bus bus);
+        Task CreateRouteAsync(Route route);
     }
 }

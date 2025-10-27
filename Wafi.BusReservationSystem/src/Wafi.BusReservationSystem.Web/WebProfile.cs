@@ -2,6 +2,7 @@
 using Wafi.BusReservationSystem.Domain.Entities;
 using Wafi.BusReservationSystem.Web.Models;
 using Wafi.BusReservationSystem.Web.Models.Bus;
+using Wafi.BusReservationSystem.Web.Models.RouteModels;
 
 namespace Wafi.BusReservationSystem.Web
 {
@@ -12,6 +13,7 @@ namespace Wafi.BusReservationSystem.Web
         { 
             CreateMap<CityCreateModel, City>().ReverseMap();
             CreateMap<BusCreateModel, Bus>().ReverseMap();
+            CreateMap<RouteCreateModel, Domain.Entities.Route>().ReverseMap();
         }
     }
 }

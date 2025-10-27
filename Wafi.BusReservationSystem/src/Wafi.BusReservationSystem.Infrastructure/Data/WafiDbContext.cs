@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 using Wafi.BusReservationSystem.Domain.Entities;
 
 namespace Wafi.BusReservationSystem.Infrastructure.Data
@@ -68,30 +67,29 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                     }
                 );
             builder.Entity<Route>()
-                .HasOne(r => r.FromCity)
+                .HasOne(r => r.BoardingPointCity)
                 .WithMany()
-                .HasForeignKey(r => r.FromCityId)
+                .HasForeignKey(r => r.BoardingPointId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<Route>()
-                .HasOne(r => r.ToCity)
-                .WithMany()
-                .HasForeignKey(r => r.ToCityId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Route>().HasData
                 (
                     new Route
                     {
                         Id = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
-                        FromCityId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
-                        ToCityId = Guid.Parse("24A44820-CFF8-4509-AA16-A1F4C5BB0BD5")
+                        BoardingPointId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
+                        Order = 1,
+                        Distance = 250,
+                        DepartureTime = new TimeSpan(18,0,0)
                     },
                     new Route
                     {
                         Id = Guid.Parse("81630E00-DF5D-4C49-A335-AAEB0E44A4D4"),
-                        FromCityId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
-                        ToCityId = Guid.Parse("4DB86802-9AEA-4E7E-801A-B05A2463BE39")
+                        BoardingPointId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
+                        Order = 1,
+                        Distance = 650,
+                        DepartureTime = new TimeSpan(21, 0, 0)
                     }
                 );
 
@@ -101,8 +99,8 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                     {
                         Id = Guid.Parse("164DC434-D1C9-4220-88F0-407517F7434C"),
                         RouteId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
-                        CityId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
-                        Order = 1,
+                        DroppingPointId = Guid.Parse("F91D9F76-694C-42D5-AFCA-69252DC86EFF"),
+                        Order = 2,
                         Distance = 0,
                         ArrivalTime = new TimeSpan(7, 0, 0),
                         DepartureTime = new TimeSpan(8, 0, 0)
@@ -111,8 +109,8 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                     {
                         Id = Guid.Parse("a83f3b24-cb63-4ec4-bc80-ef4eaaba047d"),
                         RouteId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
-                        CityId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
-                        Order = 2,
+                        DroppingPointId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
+                        Order = 3,
                         Distance = 25,
                         ArrivalTime = new TimeSpan(10, 0, 0),
                         DepartureTime = new TimeSpan(10, 05, 0)
@@ -121,8 +119,8 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data
                     {
                         Id = Guid.Parse("4DB86802-9AEA-4E7E-801A-B05A2463BE39"),
                         RouteId = Guid.Parse("39B76299-F549-4FC6-99A0-A15A607CB510"),
-                        CityId = Guid.Parse("24A44820-CFF8-4509-AA16-A1F4C5BB0BD5"),
-                        Order = 3,
+                        DroppingPointId = Guid.Parse("24A44820-CFF8-4509-AA16-A1F4C5BB0BD5"),
+                        Order = 4,
                         Distance = 50,
                         ArrivalTime = new TimeSpan(20, 0, 0),
                         DepartureTime = new TimeSpan(21, 0, 0)

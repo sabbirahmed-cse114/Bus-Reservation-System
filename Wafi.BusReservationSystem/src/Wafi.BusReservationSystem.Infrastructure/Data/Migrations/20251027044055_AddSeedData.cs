@@ -32,7 +32,7 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,21 +72,18 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    FromCityId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ToCityId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    BoardingPointId = table.Column<Guid>(type: "uuid", nullable: true),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    Distance = table.Column<double>(type: "double precision", nullable: false),
+                    DepartureTime = table.Column<TimeSpan>(type: "interval", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Routes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Routes_Cities_FromCityId",
-                        column: x => x.FromCityId,
-                        principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Routes_Cities_ToCityId",
-                        column: x => x.ToCityId,
+                        name: "FK_Routes_Cities_BoardingPointId",
+                        column: x => x.BoardingPointId,
                         principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -148,8 +145,9 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    RouteId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CityId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RouteId = table.Column<Guid>(type: "uuid", nullable: true),
+                    DroppingPointId = table.Column<Guid>(type: "uuid", nullable: true),
+                    DroppingPointCityId = table.Column<Guid>(type: "uuid", nullable: true),
                     Order = table.Column<int>(type: "integer", nullable: false),
                     Distance = table.Column<double>(type: "double precision", nullable: false),
                     ArrivalTime = table.Column<TimeSpan>(type: "interval", nullable: false),
@@ -159,17 +157,15 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                 {
                     table.PrimaryKey("PK_RouteDroppingPoints", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RouteDroppingPoints_Cities_CityId",
-                        column: x => x.CityId,
+                        name: "FK_RouteDroppingPoints_Cities_DroppingPointCityId",
+                        column: x => x.DroppingPointCityId,
                         principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_RouteDroppingPoints_Routes_RouteId",
                         column: x => x.RouteId,
                         principalTable: "Routes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -205,11 +201,11 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Routes",
-                columns: new[] { "Id", "FromCityId", "ToCityId" },
+                columns: new[] { "Id", "BoardingPointId", "DepartureTime", "Distance", "Name", "Order" },
                 values: new object[,]
                 {
-                    { new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"), new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"), new Guid("24a44820-cff8-4509-aa16-a1f4c5bb0bd5") },
-                    { new Guid("81630e00-df5d-4c49-a335-aaeb0e44a4d4"), new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"), new Guid("4db86802-9aea-4e7e-801a-b05a2463be39") }
+                    { new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"), new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"), new TimeSpan(0, 18, 0, 0, 0), 250.0, null, 1 },
+                    { new Guid("81630e00-df5d-4c49-a335-aaeb0e44a4d4"), new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"), new TimeSpan(0, 21, 0, 0, 0), 650.0, null, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -223,12 +219,12 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "RouteDroppingPoints",
-                columns: new[] { "Id", "ArrivalTime", "CityId", "DepartureTime", "Distance", "Order", "RouteId" },
+                columns: new[] { "Id", "ArrivalTime", "DepartureTime", "Distance", "DroppingPointCityId", "DroppingPointId", "Order", "RouteId" },
                 values: new object[,]
                 {
-                    { new Guid("164dc434-d1c9-4220-88f0-407517f7434c"), new TimeSpan(9, 2, 0, 0, 0), new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"), new TimeSpan(0, 8, 0, 0, 0), 0.0, 1, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510") },
-                    { new Guid("4db86802-9aea-4e7e-801a-b05a2463be39"), new TimeSpan(10, 20, 0, 0, 0), new Guid("24a44820-cff8-4509-aa16-a1f4c5bb0bd5"), new TimeSpan(0, 11, 0, 0, 0), 50.0, 3, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510") },
-                    { new Guid("a83f3b24-cb63-4ec4-bc80-ef4eaaba047d"), new TimeSpan(9, 16, 0, 0, 0), new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"), new TimeSpan(0, 8, 50, 0, 0), 25.0, 2, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510") }
+                    { new Guid("164dc434-d1c9-4220-88f0-407517f7434c"), new TimeSpan(0, 7, 0, 0, 0), new TimeSpan(0, 8, 0, 0, 0), 0.0, null, new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"), 2, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510") },
+                    { new Guid("4db86802-9aea-4e7e-801a-b05a2463be39"), new TimeSpan(0, 20, 0, 0, 0), new TimeSpan(0, 21, 0, 0, 0), 50.0, null, new Guid("24a44820-cff8-4509-aa16-a1f4c5bb0bd5"), 4, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510") },
+                    { new Guid("a83f3b24-cb63-4ec4-bc80-ef4eaaba047d"), new TimeSpan(0, 10, 0, 0, 0), new TimeSpan(0, 10, 5, 0, 0), 25.0, null, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"), 3, new Guid("39b76299-f549-4fc6-99a0-a15a607cb510") }
                 });
 
             migrationBuilder.CreateIndex(
@@ -242,9 +238,9 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                 column: "RouteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RouteDroppingPoints_CityId",
+                name: "IX_RouteDroppingPoints_DroppingPointCityId",
                 table: "RouteDroppingPoints",
-                column: "CityId");
+                column: "DroppingPointCityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RouteDroppingPoints_RouteId",
@@ -252,14 +248,9 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                 column: "RouteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Routes_FromCityId",
+                name: "IX_Routes_BoardingPointId",
                 table: "Routes",
-                column: "FromCityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Routes_ToCityId",
-                table: "Routes",
-                column: "ToCityId");
+                column: "BoardingPointId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_PassengerId",

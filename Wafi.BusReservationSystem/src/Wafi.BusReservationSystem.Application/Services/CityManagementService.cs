@@ -12,9 +12,9 @@ namespace Wafi.BusReservationSystem.Application.Services
         }
         public async Task CreateCityAsync(City city)
         {
-            var isDuplicateTitle = _busReservationSystem.CityRepository.IsCityNameDuplicate(city.Name);
+            var isDuplicateCity = _busReservationSystem.CityRepository.IsCityNameDuplicate(city.Name);
 
-            if (!isDuplicateTitle)
+            if (!isDuplicateCity)
             {
                 await _busReservationSystem.CityRepository.AddAsync(city);
                 await _busReservationSystem.SaveAsync();
@@ -24,15 +24,15 @@ namespace Wafi.BusReservationSystem.Application.Services
                 throw new Exception("City name is duplicate");
             }
         }
-        public async Task<IList<City>> GetCitiesAsync()
+
+        public IList<City> GetCities()
         {
-            return await _busReservationSystem.CityRepository.GetOrderedCityAsync();
+            return _busReservationSystem.CityRepository.GetAll();
         }
 
-        public async Task<City> GetCityAsync(Guid id)
+        public City GetCity(Guid cityId)
         {
-            return await _busReservationSystem.CityRepository.GetByIdAsync(id);
+            return _busReservationSystem.CityRepository.GetById(cityId);
         }
-
     }
 }

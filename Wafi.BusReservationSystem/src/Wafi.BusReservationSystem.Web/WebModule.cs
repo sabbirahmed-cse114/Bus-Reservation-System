@@ -37,6 +37,18 @@ namespace Wafi.BusReservationSystem.Web
             builder.RegisterType<BusManagementService>()
                 .As<IBusManagementService>()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<RouteRepository>()
+                .As<IRouteRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<RouteManagementService>()
+                .As<IRouteManagementService>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<RouteDroppingPointRepository>()
+                .As<IRouteDroppingPointRepository>()
+                .InstancePerLifetimeScope();
         }
     }
 }

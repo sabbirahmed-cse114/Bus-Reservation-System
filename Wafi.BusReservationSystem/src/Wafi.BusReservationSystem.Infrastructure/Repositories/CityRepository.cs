@@ -20,10 +20,5 @@ namespace Wafi.BusReservationSystem.Infrastructure.Repositories
                 return GetCount(x => x.Name.Equals(name)) > 0;
             }
         }
-
-        public async Task<IList<City>> GetOrderedCityAsync()
-        {
-            return await GetAsync(null, x => x.OrderBy(y => y.Name), null, true);
-        }
     }
 }

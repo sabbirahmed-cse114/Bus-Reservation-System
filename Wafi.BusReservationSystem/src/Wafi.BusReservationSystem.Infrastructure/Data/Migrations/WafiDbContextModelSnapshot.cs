@@ -136,7 +136,6 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -205,17 +204,24 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("FromCityId")
+                    b.Property<Guid?>("BoardingPointId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ToCityId")
-                        .HasColumnType("uuid");
+                    b.Property<TimeSpan>("DepartureTime")
+                        .HasColumnType("interval");
+
+                    b.Property<double>("Distance")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FromCityId");
-
-                    b.HasIndex("ToCityId");
+                    b.HasIndex("BoardingPointId");
 
                     b.ToTable("Routes");
 
@@ -223,14 +229,18 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"),
-                            FromCityId = new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"),
-                            ToCityId = new Guid("24a44820-cff8-4509-aa16-a1f4c5bb0bd5")
+                            BoardingPointId = new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"),
+                            DepartureTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Distance = 250.0,
+                            Order = 1
                         },
                         new
                         {
                             Id = new Guid("81630e00-df5d-4c49-a335-aaeb0e44a4d4"),
-                            FromCityId = new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"),
-                            ToCityId = new Guid("4db86802-9aea-4e7e-801a-b05a2463be39")
+                            BoardingPointId = new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"),
+                            DepartureTime = new TimeSpan(0, 21, 0, 0, 0),
+                            Distance = 650.0,
+                            Order = 1
                         });
                 });
 
@@ -243,24 +253,27 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                     b.Property<TimeSpan>("ArrivalTime")
                         .HasColumnType("interval");
 
-                    b.Property<Guid>("CityId")
-                        .HasColumnType("uuid");
-
                     b.Property<TimeSpan>("DepartureTime")
                         .HasColumnType("interval");
 
                     b.Property<double>("Distance")
                         .HasColumnType("double precision");
 
+                    b.Property<Guid?>("DroppingPointCityId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("DroppingPointId")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("Order")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("RouteId")
+                    b.Property<Guid?>("RouteId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("DroppingPointCityId");
 
                     b.HasIndex("RouteId");
 
@@ -270,31 +283,31 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
                         new
                         {
                             Id = new Guid("164dc434-d1c9-4220-88f0-407517f7434c"),
-                            ArrivalTime = new TimeSpan(9, 2, 0, 0, 0),
-                            CityId = new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"),
+                            ArrivalTime = new TimeSpan(0, 7, 0, 0, 0),
                             DepartureTime = new TimeSpan(0, 8, 0, 0, 0),
                             Distance = 0.0,
-                            Order = 1,
-                            RouteId = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510")
-                        },
-                        new
-                        {
-                            Id = new Guid("a83f3b24-cb63-4ec4-bc80-ef4eaaba047d"),
-                            ArrivalTime = new TimeSpan(9, 16, 0, 0, 0),
-                            CityId = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"),
-                            DepartureTime = new TimeSpan(0, 8, 50, 0, 0),
-                            Distance = 25.0,
+                            DroppingPointId = new Guid("f91d9f76-694c-42d5-afca-69252dc86eff"),
                             Order = 2,
                             RouteId = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510")
                         },
                         new
                         {
-                            Id = new Guid("4db86802-9aea-4e7e-801a-b05a2463be39"),
-                            ArrivalTime = new TimeSpan(10, 20, 0, 0, 0),
-                            CityId = new Guid("24a44820-cff8-4509-aa16-a1f4c5bb0bd5"),
-                            DepartureTime = new TimeSpan(0, 11, 0, 0, 0),
-                            Distance = 50.0,
+                            Id = new Guid("a83f3b24-cb63-4ec4-bc80-ef4eaaba047d"),
+                            ArrivalTime = new TimeSpan(0, 10, 0, 0, 0),
+                            DepartureTime = new TimeSpan(0, 10, 5, 0, 0),
+                            Distance = 25.0,
+                            DroppingPointId = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510"),
                             Order = 3,
+                            RouteId = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510")
+                        },
+                        new
+                        {
+                            Id = new Guid("4db86802-9aea-4e7e-801a-b05a2463be39"),
+                            ArrivalTime = new TimeSpan(0, 20, 0, 0, 0),
+                            DepartureTime = new TimeSpan(0, 21, 0, 0, 0),
+                            Distance = 50.0,
+                            DroppingPointId = new Guid("24a44820-cff8-4509-aa16-a1f4c5bb0bd5"),
+                            Order = 4,
                             RouteId = new Guid("39b76299-f549-4fc6-99a0-a15a607cb510")
                         });
                 });
@@ -373,38 +386,25 @@ namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Wafi.BusReservationSystem.Domain.Entities.Route", b =>
                 {
-                    b.HasOne("Wafi.BusReservationSystem.Domain.Entities.City", "FromCity")
+                    b.HasOne("Wafi.BusReservationSystem.Domain.Entities.City", "BoardingPointCity")
                         .WithMany()
-                        .HasForeignKey("FromCityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("BoardingPointId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Wafi.BusReservationSystem.Domain.Entities.City", "ToCity")
-                        .WithMany()
-                        .HasForeignKey("ToCityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("FromCity");
-
-                    b.Navigation("ToCity");
+                    b.Navigation("BoardingPointCity");
                 });
 
             modelBuilder.Entity("Wafi.BusReservationSystem.Domain.Entities.RouteDroppingPoint", b =>
                 {
-                    b.HasOne("Wafi.BusReservationSystem.Domain.Entities.City", "City")
+                    b.HasOne("Wafi.BusReservationSystem.Domain.Entities.City", "DroppingPointCity")
                         .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DroppingPointCityId");
 
                     b.HasOne("Wafi.BusReservationSystem.Domain.Entities.Route", "Route")
                         .WithMany("Stops")
-                        .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RouteId");
 
-                    b.Navigation("City");
+                    b.Navigation("DroppingPointCity");
 
                     b.Navigation("Route");
                 });

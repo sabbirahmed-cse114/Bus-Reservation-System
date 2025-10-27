@@ -24,14 +24,5 @@ namespace Wafi.BusReservationSystem.Application.Services
                 throw new Exception("Bus name is duplicate");
             }
         }
-        public async Task<IList<Bus>> GetBusesAsync()
-        {
-            return await _busReservationSystem.BusRepository.GetOrderedBusAsync();
-        }
-
-        public async Task<Bus> GetBusAsync(Guid id)
-        {
-            return await _busReservationSystem.BusRepository.GetByIdAsync(id);
-        }
     }
 }

@@ -5,7 +5,7 @@ namespace Wafi.BusReservationSystem.Application.Contracts.Interfaces
     public interface ICityManagementService
     {
         Task CreateCityAsync(City city);
-        Task<City> GetCityAsync(Guid id);
-        Task<IList<City>> GetCitiesAsync();
+        IList<City> GetCities();
+        City GetCity(Guid cityId);
     }
 }

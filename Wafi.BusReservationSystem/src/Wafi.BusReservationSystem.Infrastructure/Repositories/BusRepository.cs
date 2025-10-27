@@ -1,4 +1,5 @@
-﻿using Wafi.BusReservationSystem.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Wafi.BusReservationSystem.Domain.Entities;
 using Wafi.BusReservationSystem.Domain.RepositoryContracts;
 using Wafi.BusReservationSystem.Infrastructure.Data;
 
@@ -19,11 +20,6 @@ namespace Wafi.BusReservationSystem.Infrastructure.Repositories
             {
                 return GetCount(x => x.BusName.Equals(name)) > 0;
             }
-        }
-
-        public async Task<IList<Bus>> GetOrderedBusAsync()
-        {
-            return await GetAsync(null, x => x.OrderBy(y => y.BusName), null, true);
         }
     }
 }
