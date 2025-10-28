@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Wafi.BusReservationSystem.Infrastructure.Data;
@@ -11,9 +12,11 @@ using Wafi.BusReservationSystem.Infrastructure.Data;
 namespace Wafi.BusReservationSystem.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(WafiDbContext))]
-    partial class WafiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251028124826_AddSeedData")]
+    partial class AddSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

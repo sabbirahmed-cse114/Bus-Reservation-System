@@ -1,6 +1,4 @@
-﻿
-
-using Wafi.BusReservationSystem.Domain.Enums;
+﻿using Wafi.BusReservationSystem.Domain.Enums;
 
 namespace Wafi.BusReservationSystem.Domain.Entities
 {
