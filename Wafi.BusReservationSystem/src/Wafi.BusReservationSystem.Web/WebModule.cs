@@ -26,24 +26,24 @@ namespace Wafi.BusReservationSystem.Web
                 .As<ICityRepository>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<CityManagementService>()
-                .As<ICityManagementService>()
+            builder.RegisterType<CityService>()
+                .As<ICityService>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<BusRepository>()
                 .As<IBusRepository>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<BusManagementService>()
-                .As<IBusManagementService>()
+            builder.RegisterType<BusService>()
+                .As<IBusService>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<RouteRepository>()
                 .As<IRouteRepository>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<RouteManagementService>()
-                .As<IRouteManagementService>()
+            builder.RegisterType<RouteService>()
+                .As<IRouteService>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<RouteDroppingPointRepository>()

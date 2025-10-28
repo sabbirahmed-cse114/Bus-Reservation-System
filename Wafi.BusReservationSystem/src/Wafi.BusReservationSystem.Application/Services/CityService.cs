@@ -3,10 +3,10 @@ using Wafi.BusReservationSystem.Domain.Entities;
 
 namespace Wafi.BusReservationSystem.Application.Services
 {
-    public class CityManagementService : ICityManagementService
+    public class CityService : ICityService
     {
         private readonly IBusReservationSystemUnitOfWork _busReservationSystem;
-        public CityManagementService(IBusReservationSystemUnitOfWork busReservationSystem)
+        public CityService(IBusReservationSystemUnitOfWork busReservationSystem)
         {
             _busReservationSystem = busReservationSystem;
         }
@@ -34,5 +34,15 @@ namespace Wafi.BusReservationSystem.Application.Services
         {
             return _busReservationSystem.CityRepository.GetById(cityId);
         }
+        public async Task<City> GetByIdAsync(Guid cityId)
+        {
+            return await _busReservationSystem.CityRepository.GetByIdAsync(cityId);
+        }
+
+        public async Task<City?> GetByNameAsync(string name)
+        {
+            return await _busReservationSystem.CityRepository.GetByNameAsync(name);
+        }
     }
 }
+

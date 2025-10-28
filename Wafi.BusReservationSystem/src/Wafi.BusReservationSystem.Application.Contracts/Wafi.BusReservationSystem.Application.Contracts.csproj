@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Wafi.BusReservationSystem.Domain\Wafi.BusReservationSystem.Domain.csproj" />
   </ItemGroup>
 

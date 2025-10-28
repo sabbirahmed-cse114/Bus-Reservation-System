@@ -5,5 +5,6 @@ namespace Wafi.BusReservationSystem.Domain.Entities
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
+        public ICollection<RouteDroppingPoint> DroppingPoints { get; set; } = new List<RouteDroppingPoint>();
     }
 }

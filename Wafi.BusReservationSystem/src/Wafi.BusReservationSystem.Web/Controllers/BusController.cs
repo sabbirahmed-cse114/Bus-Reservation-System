@@ -11,11 +11,11 @@ namespace Wafi.BusReservationSystem.Web.Controllers
     public class BusController : Controller
     {
         private readonly ILogger<BusController> _logger;
-        private readonly IBusManagementService _busManagementService;
+        private readonly IBusService _busManagementService;
         private readonly IMapper _mapper;
 
         public BusController(ILogger<BusController> logger, 
-            IBusManagementService busManagementService, 
+            IBusService busManagementService, 
             IMapper mapper)
         {
             _logger = logger;

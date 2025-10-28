@@ -14,11 +14,11 @@ namespace Wafi.BusReservationSystem.Infrastructure.Repositories
         {
             if (id.HasValue)
             {
-                return GetCount(x => !x.Id.Equals(id.Value) && x.BusName.Equals(name)) > 0;
+                return GetCount(x => !x.Id.Equals(id.Value) && x.Name.Equals(name)) > 0;
             }
             else
             {
-                return GetCount(x => x.BusName.Equals(name)) > 0;
+                return GetCount(x => x.Name.Equals(name)) > 0;
             }
         }
     }

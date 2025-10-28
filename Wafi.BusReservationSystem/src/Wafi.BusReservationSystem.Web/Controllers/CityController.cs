@@ -8,10 +8,10 @@ namespace Wafi.BusReservationSystem.Web.Controllers
 {
     public class CityController : Controller
     {
-        private readonly ICityManagementService _cityManagementService;
+        private readonly ICityService _cityManagementService;
         private readonly ILogger<CityController> _logger;
         private readonly IMapper _mapper;
-        public CityController(ICityManagementService cityManagementService, 
+        public CityController(ICityService cityManagementService, 
             ILogger<CityController> logger,
             IMapper mapper)
         {

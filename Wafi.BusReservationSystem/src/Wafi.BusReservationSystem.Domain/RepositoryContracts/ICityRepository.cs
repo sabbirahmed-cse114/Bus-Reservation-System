@@ -5,5 +5,6 @@ namespace Wafi.BusReservationSystem.Domain.RepositoryContracts
     public interface ICityRepository : IRepositoryBase<City,Guid>
     {
         bool IsCityNameDuplicate(string Name, Guid? id = null);
+        Task<City?> GetByNameAsync(string name);
     }
 }

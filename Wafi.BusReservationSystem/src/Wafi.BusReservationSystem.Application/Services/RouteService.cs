@@ -4,10 +4,10 @@ using Wafi.BusReservationSystem.Domain.Entities;
 
 namespace Wafi.BusReservationSystem.Application.Services
 {
-    public class RouteManagementService : IRouteManagementService
+    public class RouteService : IRouteService
     {
         private readonly IBusReservationSystemUnitOfWork _busReservationSystem;
-        public RouteManagementService(IBusReservationSystemUnitOfWork busReservationSystem)
+        public RouteService(IBusReservationSystemUnitOfWork busReservationSystem)
         {
             _busReservationSystem = busReservationSystem;
         }
@@ -15,7 +15,7 @@ namespace Wafi.BusReservationSystem.Application.Services
         public async Task CreateRouteAsync(Route route)
         {
             var isRouteDuplicate = _busReservationSystem.RouteRepository.IsDuplicateRoute(route.Name);
-            var hasDroppingPointDuplicate = _busReservationSystem.RouteDroppingPointRepository.HasDroppingPointDuplicate(route.Stops.ToList());
+            var hasDroppingPointDuplicate = _busReservationSystem.RouteDroppingPointRepository.HasDroppingPointDuplicate(route.DroppingPoints.ToList());
 
             if(!isRouteDuplicate  && !hasDroppingPointDuplicate )
             {

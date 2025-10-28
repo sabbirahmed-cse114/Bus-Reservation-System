@@ -1,6 +1,4 @@
-﻿
-
-namespace Wafi.BusReservationSystem.Domain
+﻿namespace Wafi.BusReservationSystem.Domain
 {
     public interface IUnitOfWork : IDisposable, IAsyncDisposable
     {

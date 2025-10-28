@@ -10,13 +10,13 @@ namespace Wafi.BusReservationSystem.Web.Controllers
     public class RouteController : Controller
     {
         private readonly ILogger<RouteController> _logger;
-        private readonly IRouteManagementService _routeManagementService;
-        private readonly ICityManagementService _cityManagementService;
+        private readonly IRouteService _routeManagementService;
+        private readonly ICityService _cityManagementService;
         private readonly IMapper _mapper;
 
         public RouteController(ILogger<RouteController> logger, 
-            IRouteManagementService routeManagementService, 
-            ICityManagementService cityManagementService,
+            IRouteService routeManagementService, 
+            ICityService cityManagementService,
             IMapper mapper)
         {
             _logger = logger;
@@ -42,47 +42,47 @@ namespace Wafi.BusReservationSystem.Web.Controllers
             return View(model);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(RouteCreateModel model)
-        {
-            var cities = _cityManagementService.GetCities();
-            model.SetBoardingPointsValues(cities);
+        //[HttpPost, ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(RouteCreateModel model)
+        //{
+        //    var cities = _cityManagementService.GetCities();
+        //    model.SetBoardingPointsValues(cities);
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    int cnt = 1;
-                    var route = _mapper.Map<Domain.Entities.Route>(model);
-                    route.Id = Guid.NewGuid();
-                    route.BoardingPointCity = _cityManagementService.GetCity((Guid)model.BoardingPointId);
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            int cnt = 1;
+        //            var route = _mapper.Map<Domain.Entities.Route>(model);
+        //            route.Id = Guid.NewGuid();
+        //            route.BoardingPointCity = _cityManagementService.GetCity((Guid)model.BoardingPointId);
 
-                        foreach (var dpModel in model.DroppingPoints)
-                        {
-                            var droppingPoint = new RouteDroppingPoint
-                            {
-                                Id = Guid.NewGuid(),
-                                RouteId = route.Id,
-                                DroppingPointId = dpModel.DroppingPointId,
-                                Distance = dpModel.Distance,
-                                Order = cnt++
-                            };
-                            route.Stops.Add(droppingPoint);
-                        route.Distance += dpModel.Distance;
-                        }
-                    route.TotalStops = cnt - 1;
-                    await _routeManagementService.CreateRouteAsync(route);
-                    TempData["Success"] = "Route created successfully!";
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Error creating route");
-                    TempData["Error"] = "Failed to create route.";
-                    return View(model);
-                }
-            }
-            return View(model);
-        }
+        //                foreach (var dpModel in model.DroppingPoints)
+        //                {
+        //                    var droppingPoint = new RouteDroppingPoint
+        //                    {
+        //                        Id = Guid.NewGuid(),
+        //                        RouteId = route.Id,
+        //                        DroppingPointId = dpModel.DroppingPointId,
+        //                        Distance = dpModel.Distance,
+        //                        Order = cnt++
+        //                    };
+        //                    route.Stops.Add(droppingPoint);
+        //                route.Distance += dpModel.Distance;
+        //                }
+        //            route.TotalStops = cnt - 1;
+        //            await _routeManagementService.CreateRouteAsync(route);
+        //            TempData["Success"] = "Route created successfully!";
+        //            return RedirectToAction("Index");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            _logger.LogError(ex, "Error creating route");
+        //            TempData["Error"] = "Failed to create route.";
+        //            return View(model);
+        //        }
+        //    }
+        //    return View(model);
+        //}
     }
 }

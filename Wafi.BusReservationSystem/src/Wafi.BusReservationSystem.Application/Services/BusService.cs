@@ -3,16 +3,16 @@ using Wafi.BusReservationSystem.Domain.Entities;
 
 namespace Wafi.BusReservationSystem.Application.Services
 {
-    public class BusManagementService : IBusManagementService
+    public class BusService : IBusService
     {
         private readonly IBusReservationSystemUnitOfWork _busReservationSystem;
-        public BusManagementService(IBusReservationSystemUnitOfWork busReservationSystem)
+        public BusService(IBusReservationSystemUnitOfWork busReservationSystem)
         {
             _busReservationSystem = busReservationSystem;
         }
         public async Task CreateBusAsync(Bus bus)
         {
-            var isBusNameDuplicate = _busReservationSystem.BusRepository.IsBusNameDuplicate(bus.BusName);
+            var isBusNameDuplicate = _busReservationSystem.BusRepository.IsBusNameDuplicate(bus.Name);
 
             if (!isBusNameDuplicate)
             {

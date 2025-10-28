@@ -20,5 +20,9 @@ namespace Wafi.BusReservationSystem.Infrastructure.Repositories
                 return GetCount(x => x.Name.Equals(name)) > 0;
             }
         }
+        public async Task<City?> GetByNameAsync(string name)
+        {
+            return await SingleOrDefaultAsync(x => x, x => x.Name == name);
+        }
     }
 }

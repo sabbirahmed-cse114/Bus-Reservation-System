@@ -14,10 +14,10 @@ namespace Wafi.BusReservationSystem.Infrastructure.Repositories
         {
             if (droppingPoints == null || droppingPoints.Count == 0)
                 return false;
-            var cityIds = droppingPoints.Select(dp => dp.DroppingPointId).ToList();
+            var cityIds = droppingPoints.Select(dp => dp.CityId).ToList();
             foreach (var cityId in cityIds)
             {
-                int count = droppingPoints.Count(dp => dp.DroppingPointId.Equals(cityId));
+                int count = droppingPoints.Count(dp => dp.CityId.Equals(cityId));
                 if (count > 1)
                     return true;
             }
